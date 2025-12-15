@@ -1,18 +1,8 @@
-fetch("membres.json")
+fetch('membres.json')
   .then(response => response.json())
   .then(data => {
-    const container = document.getElementById("noms");
-
+    const div = document.getElementById('noms');
     data.forEach(membre => {
-      const div = document.createElement("div");
-      div.className = "member";
-      div.innerHTML = `
-        <strong>${membre.prenom} ${membre.nom}</strong><br>
-        <em>${membre.role}</em>
-      `;
-      container.appendChild(div);
+      div.innerHTML += `<p>${membre.prenom} ${membre.nom} - ${membre.role}</p>`;
     });
-  })
-  .catch(error => {
-    console.error("Erreur de chargement JSON :", error);
-  });
+});
